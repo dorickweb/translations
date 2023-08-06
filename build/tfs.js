@@ -39,10 +39,10 @@ function startGitProcess() {
         //     }
         // })
         process.chdir('crm-header');
-        yield git.checkoutLocalBranch('tfs-prs');
+        yield git.checkoutLocalBranch('tfs-prs-commit');
         yield git.add('crm-header/resources/resources.en-ES.json')
             .commit('Committing resource file')
-            .push('https://github.com/dorickweb/crm-header.git', 'tfs-prs');
+            .push('https://github.com/dorickweb/crm-header.git', 'tfs-prs-commit');
         // await git.add('crm-interactions/resources/resources.en-ES.json')
         //     .commit('Committing resource file')
         //     .push('https://github.com/dorickweb/crm-interactions.git', 'tfs-prs');
