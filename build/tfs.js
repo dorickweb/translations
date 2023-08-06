@@ -19,6 +19,7 @@ function startGitProcess() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Handle git process');
         const git = (0, simple_git_1.default)();
+        //await git.deleteLocalBranch('tfs-prs');
         yield git.clone('https://github.com/dorickweb/crm-header.git');
         yield git.clone('https://github.com/dorickweb/crm-interactions.git');
         const filePath = 'resources.en-US.json';

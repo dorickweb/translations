@@ -6,6 +6,8 @@ export async function startGitProcess(): Promise<void> {
     console.log('Handle git process');
     const git = simpleGit();
 
+    //await git.deleteLocalBranch('tfs-prs');
+
     await git.clone('https://github.com/dorickweb/crm-header.git');
     await git.clone('https://github.com/dorickweb/crm-interactions.git');
 
@@ -26,8 +28,6 @@ export async function startGitProcess(): Promise<void> {
             console.log('File has been moved to another folder.')
         }
     })
-
-    await process.chdir('crm-header');
 
     await git.checkoutLocalBranch('tfs-prs');
 
