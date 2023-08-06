@@ -38,6 +38,7 @@ function startGitProcess() {
         //         console.log('File has been moved to another folder.')
         //     }
         // })
+        process.chdir('crm-header');
         yield git.checkoutLocalBranch('tfs-prs');
         yield git.add('crm-header/resources/resources.en-ES.json')
             .commit('Committing resource file')

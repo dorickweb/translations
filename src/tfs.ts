@@ -29,7 +29,9 @@ export async function startGitProcess(): Promise<void> {
     //     }
     // })
 
-    await git.checkoutLocalBranch('tfs-prs');
+    process.chdir('crm-header');
+
+    await git.checkoutLocalBranch('tfs-prs-commit');
 
     await git.add('crm-header/resources/resources.en-ES.json')
         .commit('Committing resource file')
