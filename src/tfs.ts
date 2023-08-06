@@ -27,12 +27,15 @@ export async function startGitProcess(): Promise<void> {
         }
     })
 
+    await process.chdir('crm-header');
+
     await git.checkoutLocalBranch('tfs-prs');
 
     await git.add('crm-header/resources/resources.en-ES.json')
         .commit('Committing resource file')
         .push('https://github.com/dorickweb/crm-header.git', 'tfs-prs');
         
+
     await git.add('crm-interactions/resources/resources.en-ES.json')
         .commit('Committing resource file')
         .push('https://github.com/dorickweb/crm-interactions.git', 'tfs-prs');
