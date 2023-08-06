@@ -21,7 +21,7 @@ function startGitProcess() {
         const git = (0, simple_git_1.default)();
         //await git.deleteLocalBranch('tfs-prs');
         yield git.clone('https://github.com/dorickweb/crm-header.git');
-        yield git.clone('https://github.com/dorickweb/crm-interactions.git');
+        // await git.clone('https://github.com/dorickweb/crm-interactions.git');
         const filePath = 'resources.en-US.json';
         yield fs.copyFile(filePath, 'crm-header/resources/resources.en-ES.json', (error) => {
             if (error) {
@@ -31,21 +31,20 @@ function startGitProcess() {
                 console.log('File has been moved to another folder.');
             }
         });
-        yield fs.copyFile(filePath, 'crm-interactions/resources/resources.en-ES.json', (error) => {
-            if (error) {
-                throw error;
-            }
-            else {
-                console.log('File has been moved to another folder.');
-            }
-        });
+        // await fs.copyFile(filePath, 'crm-interactions/resources/resources.en-ES.json', (error: any) => {
+        //     if (error) {
+        //         throw error
+        //     } else {
+        //         console.log('File has been moved to another folder.')
+        //     }
+        // })
         yield git.checkoutLocalBranch('tfs-prs');
         yield git.add('crm-header/resources/resources.en-ES.json')
             .commit('Committing resource file')
             .push('https://github.com/dorickweb/crm-header.git', 'tfs-prs');
-        yield git.add('crm-interactions/resources/resources.en-ES.json')
-            .commit('Committing resource file')
-            .push('https://github.com/dorickweb/crm-interactions.git', 'tfs-prs');
+        // await git.add('crm-interactions/resources/resources.en-ES.json')
+        //     .commit('Committing resource file')
+        //     .push('https://github.com/dorickweb/crm-interactions.git', 'tfs-prs');
     });
 }
 exports.startGitProcess = startGitProcess;
